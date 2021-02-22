@@ -1,0 +1,25 @@
+= Tomcat Debug
+
+Utility to investigate tomcat issues.
+
+== Installation
+
+Add `tomcat-debug-${tomcat-debug.version}-SNAPSHOT.jar` to `$TOMCAT_BASE/lib` (or through `catalina.properties` in `common.loader`).
+
+== Listeners
+
+* `TomcatDebugListener` enables to log some deployment information to ensure about server state like webapp classloader.
+
+== Usage
+
+[souce,xml]
+.server.xml
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<Server port="8005" shutdown="SHUTDOWN">
+  <Listener className="io.yupiik.tomcat.TomcatDebugListener" /> <1>
+  <!-- ... -->
+</Server>
+----
+
+<.> Enable the debug listener - better if put first.
